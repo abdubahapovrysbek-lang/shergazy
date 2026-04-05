@@ -20,7 +20,9 @@
     "react-native-screens": "~4.4.0",
     "@react-navigation/native": "^6.1.18",
     "@expo/vector-icons": "^14.0.0",
-    "expo-image-picker": "~16.0.0"
+    "expo-image-picker": "~16.0.0",
+    "expo-file-system": "~18.0.0",
+    "openai": "^4.77.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.0",
