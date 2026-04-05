@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 
 const app = express();
@@ -7,6 +8,9 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+
+// Serve React build
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // In-memory articles store
 let articles = [
@@ -311,6 +315,11 @@ app.get('/api/categories', (req, res) => {
   res.json(categories);
 });
 
-app.listen(PORT, () => {
+// All other routes serve React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
+
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
