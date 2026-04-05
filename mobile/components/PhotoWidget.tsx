@@ -8,7 +8,6 @@ import {
   Alert,
   ActivityIndicator,
   Dimensions,
-  ScrollView,
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { Ionicons } from '@expo/vector-icons';
@@ -16,8 +15,8 @@ import { Colors } from '../constants/Colors';
 import { Card } from './Card';
 import { AnalysisResult } from './AnalysisResult';
 import { analyzeMathImage, type MathAnalysis } from '../services/openai';
+import { useSaved } from '../context/SavedContext';
 
-const { width } = Dimensions.get('window');
 const PREVIEW_HEIGHT = 220;
 
 type PickedImage = { uri: string; width: number; height: number };
@@ -29,9 +28,12 @@ type AnalysisState =
   | { status: 'error'; message: string };
 
 export function PhotoWidget() {
+  const { save, isSaved } = useSaved();
   const [image, setImage] = useState<PickedImage | null>(null);
   const [imageLoading, setImageLoading] = useState(false);
   const [analysis, setAnalysis] = useState<AnalysisState>({ status: 'idle' });
+  const [saving, setSaving] = useState(false);
+  const [savedId, setSavedId] = useState<string | null>(null);
 
   // ── Permission helpers ───────────────────────────────────────────────────
 
@@ -49,6 +51,7 @@ export function PhotoWidget() {
   function applyAsset(asset: ImagePicker.ImagePickerAsset) {
     setImage({ uri: asset.uri, width: asset.width, height: asset.height });
     setAnalysis({ status: 'idle' });
+    setSavedId(null);
   }
 
   async function handleCamera() {
@@ -100,6 +103,7 @@ export function PhotoWidget() {
         onPress: () => {
           setImage(null);
           setAnalysis({ status: 'idle' });
+          setSavedId(null);
         },
       },
     ]);
@@ -124,9 +128,25 @@ export function PhotoWidget() {
     }
   }
 
+  // ── Save to collection ───────────────────────────────────────────────────
+
+  async function handleSave() {
+    if (!image || analysis.status !== 'done') return;
+    setSaving(true);
+    try {
+      const id = await save(image.uri, analysis.result);
+      setSavedId(id);
+    } catch (err) {
+      Alert.alert('Save Failed', 'Could not save this problem. Please try again.');
+    } finally {
+      setSaving(false);
+    }
+  }
+
   // ── Render ───────────────────────────────────────────────────────────────
 
   const isAnalyzing = analysis.status === 'analyzing';
+  const alreadySaved = savedId !== null;
 
   return (
     <Card style={styles.card}>
@@ -239,7 +259,7 @@ export function PhotoWidget() {
       {/* ── Analysis result ─────────────────────────────────────────────── */}
       {analysis.status === 'done' && (
         <View style={styles.resultWrapper}>
-          {/* Re-analyse / change photo strip */}
+          {/* Action strip */}
           <View style={styles.resultActions}>
             <TouchableOpacity style={styles.resultActionBtn} onPress={handleAnalyze}>
               <Ionicons name="refresh" size={14} color={Colors.primary} />
@@ -250,6 +270,31 @@ export function PhotoWidget() {
               <Text style={[styles.resultActionText, { color: Colors.textSecondary }]}>Change photo</Text>
             </TouchableOpacity>
           </View>
+
+          {/* Save button */}
+          <TouchableOpacity
+            style={[styles.saveBtn, alreadySaved && styles.saveBtnSaved]}
+            onPress={handleSave}
+            activeOpacity={0.8}
+            disabled={alreadySaved || saving}
+          >
+            {saving ? (
+              <>
+                <ActivityIndicator size="small" color={alreadySaved ? Colors.success : Colors.white} />
+                <Text style={[styles.saveBtnText, alreadySaved && styles.saveBtnTextSaved]}>Saving…</Text>
+              </>
+            ) : alreadySaved ? (
+              <>
+                <Ionicons name="checkmark-circle" size={18} color={Colors.success} />
+                <Text style={[styles.saveBtnText, styles.saveBtnTextSaved]}>Saved to Collection</Text>
+              </>
+            ) : (
+              <>
+                <Ionicons name="bookmark-outline" size={18} color={Colors.white} />
+                <Text style={styles.saveBtnText}>Save to Collection</Text>
+              </>
+            )}
+          </TouchableOpacity>
 
           <AnalysisResult
             analysis={analysis.result}
@@ -439,4 +484,22 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface,
   },
   resultActionText: { fontSize: 13, fontWeight: '600', color: Colors.primary },
+
+  saveBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    backgroundColor: Colors.primary,
+    borderRadius: 12,
+    paddingVertical: 13,
+    marginBottom: 14,
+  },
+  saveBtnSaved: {
+    backgroundColor: Colors.successLight,
+    borderWidth: 1,
+    borderColor: Colors.success + '50',
+  },
+  saveBtnText: { fontSize: 15, fontWeight: '700', color: Colors.white },
+  saveBtnTextSaved: { color: Colors.success },
 });
