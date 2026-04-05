@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 
-function Header() {
+function Header({ darkMode, onToggleDark }) {
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
 
@@ -39,6 +39,14 @@ function Header() {
 
         <nav className="header-nav">
           <Link to="/">Home</Link>
+          <button
+            className="dark-toggle"
+            onClick={onToggleDark}
+            title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            aria-label="Toggle dark mode"
+          >
+            {darkMode ? '☀️' : '🌙'}
+          </button>
           <Link to="/create" className="nav-create-btn">+ New Article</Link>
         </nav>
       </div>

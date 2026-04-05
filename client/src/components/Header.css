@@ -1,10 +1,11 @@
 .header {
-  background-color: #fff;
-  border-bottom: 1px solid #a2a9b1;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  box-shadow: 0 1px 4px var(--shadow);
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 .header-inner {
@@ -39,6 +40,7 @@
   font-size: 24px;
   font-weight: bold;
   box-shadow: 0 2px 6px rgba(42,82,190,0.3);
+  flex-shrink: 0;
 }
 
 .logo-text {
@@ -49,14 +51,14 @@
 .logo-title {
   font-family: 'Linux Libertine', Georgia, serif;
   font-size: 20px;
-  color: #000;
+  color: var(--text-primary);
   line-height: 1.1;
   font-weight: 600;
 }
 
 .logo-subtitle {
   font-size: 11px;
-  color: #54595d;
+  color: var(--text-secondary);
   line-height: 1;
 }
 
@@ -69,49 +71,72 @@
 .search-input {
   flex: 1;
   padding: 8px 12px;
-  border: 1px solid #a2a9b1;
+  border: 1px solid var(--border);
   border-right: none;
   border-radius: 4px 0 0 4px;
   font-size: 14px;
   outline: none;
-  transition: border-color 0.2s;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
 }
 
 .search-input:focus {
-  border-color: #3366cc;
+  border-color: var(--accent);
 }
 
 .search-btn {
   padding: 8px 16px;
-  background-color: #f8f9fa;
-  border: 1px solid #a2a9b1;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border);
   border-radius: 0 4px 4px 0;
   cursor: pointer;
   font-size: 14px;
-  color: #202122;
+  color: var(--text-primary);
   transition: background-color 0.2s;
   white-space: nowrap;
 }
 
 .search-btn:hover {
-  background-color: #e8eaed;
+  background-color: var(--bg-hover);
 }
 
 .header-nav {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   flex-shrink: 0;
 }
 
 .header-nav a {
-  color: #3366cc;
+  color: var(--link);
   font-size: 14px;
   white-space: nowrap;
 }
 
+/* Dark mode toggle */
+.dark-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  transition: background-color 0.2s, border-color 0.2s;
+  color: var(--text-primary);
+}
+
+.dark-toggle:hover {
+  background-color: var(--bg-hover);
+}
+
 .nav-create-btn {
-  background-color: #3366cc;
+  background-color: var(--accent);
   color: white !important;
   padding: 6px 14px;
   border-radius: 4px;
@@ -120,7 +145,7 @@
 }
 
 .nav-create-btn:hover {
-  background-color: #2a52be;
+  background-color: var(--accent-dark);
   text-decoration: none !important;
 }
 

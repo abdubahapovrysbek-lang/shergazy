@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -10,10 +10,19 @@ import EditArticlePage from './pages/EditArticlePage';
 import './App.css';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem('darkMode') === 'true';
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
+
   return (
     <Router>
       <div className="app">
-        <Header />
+        <Header darkMode={darkMode} onToggleDark={() => setDarkMode(d => !d)} />
         <main className="main-content">
           <Routes>
             <Route path="/" element={<HomePage />} />

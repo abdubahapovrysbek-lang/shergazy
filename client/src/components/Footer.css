@@ -1,8 +1,9 @@
 .footer {
-  background-color: #f8f9fa;
-  border-top: 1px solid #a2a9b1;
+  background-color: var(--bg-subtle);
+  border-top: 1px solid var(--border);
   margin-top: 40px;
   padding: 20px 0;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 .footer-inner {
@@ -17,22 +18,22 @@
 }
 
 .footer-links a {
-  color: #3366cc;
+  color: var(--link);
   font-size: 13px;
 }
 
 .separator {
   margin: 0 8px;
-  color: #a2a9b1;
+  color: var(--text-muted);
 }
 
 .footer-text {
-  color: #54595d;
+  color: var(--text-secondary);
   font-size: 13px;
   margin-top: 4px;
 }
 
 .footer-text.small {
   font-size: 11px;
-  color: #a2a9b1;
+  color: var(--text-muted);
 }

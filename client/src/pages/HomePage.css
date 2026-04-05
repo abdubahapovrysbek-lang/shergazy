@@ -6,10 +6,11 @@
 .hero {
   text-align: center;
   padding: 48px 16px;
-  background: #fff;
-  border: 1px solid #a2a9b1;
+  background: var(--hero-bg);
+  border: 1px solid var(--border);
   border-radius: 4px;
   margin-bottom: 32px;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 .hero-logo {
@@ -31,12 +32,12 @@
 .hero h1 {
   font-family: 'Linux Libertine', Georgia, serif;
   font-size: 42px;
-  color: #000;
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
 .hero-tagline {
-  color: #54595d;
+  color: var(--text-secondary);
   font-size: 16px;
   margin-bottom: 24px;
 }
@@ -50,21 +51,27 @@
 .hero-search-input {
   flex: 1;
   padding: 12px 16px;
-  border: 1px solid #a2a9b1;
+  border: 1px solid var(--border);
   border-right: none;
   border-radius: 4px 0 0 4px;
   font-size: 16px;
   outline: none;
-  transition: border-color 0.2s;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.hero-search-input::placeholder {
+  color: var(--text-muted);
 }
 
 .hero-search-input:focus {
-  border-color: #3366cc;
+  border-color: var(--accent);
 }
 
 .hero-search-btn {
   padding: 12px 24px;
-  background: #3366cc;
+  background: var(--accent);
   color: white;
   border: none;
   border-radius: 0 4px 4px 0;
@@ -74,11 +81,11 @@
 }
 
 .hero-search-btn:hover {
-  background: #2a52be;
+  background: var(--accent-dark);
 }
 
 .hero-stats {
-  color: #54595d;
+  color: var(--text-secondary);
   font-size: 13px;
   display: flex;
   align-items: center;
@@ -87,7 +94,7 @@
 }
 
 .hero-stats strong {
-  color: #202122;
+  color: var(--text-primary);
 }
 
 /* Articles Section */
@@ -103,13 +110,13 @@
   gap: 12px;
   margin-bottom: 16px;
   padding-bottom: 8px;
-  border-bottom: 1px solid #a2a9b1;
+  border-bottom: 1px solid var(--border);
 }
 
 .section-header h2 {
   font-family: 'Linux Libertine', Georgia, serif;
   font-size: 24px;
-  color: #000;
+  color: var(--text-primary);
 }
 
 .category-filters {
@@ -120,23 +127,23 @@
 
 .filter-btn {
   padding: 4px 12px;
-  border: 1px solid #a2a9b1;
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: #f8f9fa;
+  background: var(--bg-subtle);
   cursor: pointer;
   font-size: 13px;
-  color: #202122;
+  color: var(--text-primary);
   transition: all 0.2s;
 }
 
 .filter-btn:hover {
-  background: #e8eaed;
+  background: var(--bg-hover);
 }
 
 .filter-btn.active {
-  background: #3366cc;
+  background: var(--accent);
   color: white;
-  border-color: #3366cc;
+  border-color: var(--accent);
 }
 
 .articles-grid {
@@ -148,28 +155,30 @@
 .loading, .empty {
   text-align: center;
   padding: 40px;
-  color: #54595d;
+  color: var(--text-secondary);
   font-style: italic;
 }
 
 /* Welcome Box */
 .welcome-box {
-  background: #f8f9fa;
-  border: 1px solid #a2a9b1;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
   border-radius: 4px;
   padding: 24px;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 .welcome-box h2 {
   font-family: 'Linux Libertine', Georgia, serif;
   font-size: 22px;
   margin-bottom: 12px;
-  border-bottom: 1px solid #a2a9b1;
+  border-bottom: 1px solid var(--border);
   padding-bottom: 8px;
+  color: var(--text-primary);
 }
 
 .welcome-box p {
-  color: #54595d;
+  color: var(--text-secondary);
   margin-bottom: 20px;
   line-height: 1.6;
 }
@@ -183,9 +192,10 @@
 .feature {
   text-align: center;
   padding: 16px;
-  background: #fff;
-  border: 1px solid #e0e0e0;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
   border-radius: 4px;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 .feature-icon {
@@ -196,10 +206,11 @@
 .feature h3 {
   font-size: 15px;
   margin-bottom: 6px;
+  color: var(--text-primary);
 }
 
 .feature p {
   font-size: 13px;
-  color: #54595d;
+  color: var(--text-secondary);
   margin: 0;
 }

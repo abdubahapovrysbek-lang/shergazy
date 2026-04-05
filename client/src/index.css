@@ -1,3 +1,58 @@
+/* ── Light theme (default) ── */
+:root,
+[data-theme="light"] {
+  --bg-page:        #f8f9fa;
+  --bg-surface:     #ffffff;
+  --bg-subtle:      #f8f9fa;
+  --bg-hover:       #e8eaed;
+  --border:         #a2a9b1;
+  --border-light:   #e0e0e0;
+  --text-primary:   #202122;
+  --text-secondary: #54595d;
+  --text-muted:     #a2a9b1;
+  --link:           #3366cc;
+  --link-hover:     #0645ad;
+  --accent:         #3366cc;
+  --accent-dark:    #2a52be;
+  --accent-bg:      #eaf3fb;
+  --accent-border:  #c8d8f0;
+  --red:            #d33;
+  --red-bg:         #fef0f0;
+  --code-bg:        #f0f0f0;
+  --code-color:     #c7254e;
+  --shadow:         rgba(0,0,0,0.08);
+  --toc-bg:         #f8f9fa;
+  --summary-border: #3366cc;
+  --hero-bg:        #ffffff;
+}
+
+/* ── Dark theme ── */
+[data-theme="dark"] {
+  --bg-page:        #0d1117;
+  --bg-surface:     #161b22;
+  --bg-subtle:      #21262d;
+  --bg-hover:       #30363d;
+  --border:         #30363d;
+  --border-light:   #21262d;
+  --text-primary:   #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted:     #484f58;
+  --link:           #58a6ff;
+  --link-hover:     #79c0ff;
+  --accent:         #58a6ff;
+  --accent-dark:    #388bfd;
+  --accent-bg:      #1c2d3f;
+  --accent-border:  #1f4068;
+  --red:            #f85149;
+  --red-bg:         #2d1a1a;
+  --code-bg:        #2d333b;
+  --code-color:     #f0883e;
+  --shadow:         rgba(0,0,0,0.4);
+  --toc-bg:         #21262d;
+  --summary-border: #58a6ff;
+  --hero-bg:        #161b22;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,19 +62,20 @@
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
-  color: #202122;
-  background-color: #f8f9fa;
+  color: var(--text-primary);
+  background-color: var(--bg-page);
   line-height: 1.6;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 a {
-  color: #3366cc;
+  color: var(--link);
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
-  color: #0645ad;
+  color: var(--link-hover);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -32,19 +88,7 @@ input, textarea, select, button {
   font-family: inherit;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #c8ccd1;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #a2a9b1;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-subtle); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
