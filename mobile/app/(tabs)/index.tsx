@@ -14,6 +14,7 @@ import { Card } from '../../components/Card';
 import { Badge } from '../../components/Badge';
 import { ProgressBar } from '../../components/ProgressBar';
 import { SectionHeader } from '../../components/SectionHeader';
+import { PhotoWidget } from '../../components/PhotoWidget';
 
 const { width } = Dimensions.get('window');
 
@@ -119,6 +120,10 @@ export default function DashboardScreen() {
             </TouchableOpacity>
           ))}
         </View>
+
+        {/* Photo Upload Widget */}
+        <SectionHeader title="Scan Homework" />
+        <PhotoWidget />
 
         {/* Continue Learning */}
         <SectionHeader title="Continue Learning" actionLabel="See all" />
