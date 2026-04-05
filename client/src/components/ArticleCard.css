@@ -1,0 +1,59 @@
+.article-card {
+  background: #fff;
+  border: 1px solid #a2a9b1;
+  border-radius: 4px;
+  padding: 16px;
+  transition: box-shadow 0.2s;
+}
+
+.article-card:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.article-card-category {
+  display: inline-block;
+  background: #eaf3fb;
+  color: #3366cc;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.article-card-title {
+  font-family: 'Linux Libertine', Georgia, serif;
+  font-size: 18px;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.article-card-title a {
+  color: #0645ad;
+}
+
+.article-card-title a:hover {
+  color: #0b0080;
+}
+
+.article-card-summary {
+  color: #54595d;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.article-card-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #a2a9b1;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 8px;
+}

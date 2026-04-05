@@ -1,0 +1,74 @@
+.search-page {
+  padding: 24px 0;
+}
+
+.search-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #a2a9b1;
+}
+
+.search-header h1 {
+  font-family: 'Linux Libertine', Georgia, serif;
+  font-size: 28px;
+  font-weight: normal;
+  margin-bottom: 16px;
+}
+
+.search-form {
+  display: flex;
+  max-width: 560px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #a2a9b1;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  font-size: 15px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #3366cc;
+}
+
+.search-btn {
+  padding: 10px 20px;
+  background: #3366cc;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.search-btn:hover {
+  background: #2a52be;
+}
+
+.search-status {
+  margin-bottom: 16px;
+  color: #54595d;
+  font-size: 14px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.no-results, .search-empty {
+  text-align: center;
+  padding: 40px;
+  color: #54595d;
+  background: #fff;
+  border: 1px solid #a2a9b1;
+  border-radius: 4px;
+}
+
+.no-results p, .search-empty p {
+  margin-bottom: 8px;
+}

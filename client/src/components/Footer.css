@@ -1,0 +1,38 @@
+.footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #a2a9b1;
+  margin-top: 40px;
+  padding: 20px 0;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.footer-links {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #3366cc;
+  font-size: 13px;
+}
+
+.separator {
+  margin: 0 8px;
+  color: #a2a9b1;
+}
+
+.footer-text {
+  color: #54595d;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.footer-text.small {
+  font-size: 11px;
+  color: #a2a9b1;
+}
