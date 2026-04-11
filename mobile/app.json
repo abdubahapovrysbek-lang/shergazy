@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "Math Homework Helper",
-    "slug": "math-homework-helper",
+    "name": "Rysbek AI",
+    "slug": "rysbek-ai",
     "version": "1.0.0",
-    "scheme": "mathhelper",
+    "scheme": "rysbekai",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -14,14 +14,14 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.mathhelper.app"
+      "bundleIdentifier": "com.rysbekai.app"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#6C63FF"
       },
-      "package": "com.mathhelper.app"
+      "package": "com.rysbekai.app"
     },
     "web": {
       "bundler": "metro",

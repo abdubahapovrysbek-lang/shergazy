@@ -1,5 +1,5 @@
 {
-  "name": "math-homework-helper",
+  "name": "rysbek-ai",
   "version": "1.0.0",
   "main": "expo-router/entry",
   "scripts": {
@@ -23,7 +23,11 @@
     "expo-image-picker": "~16.0.0",
     "expo-file-system": "~18.0.0",
     "openai": "^4.77.0",
-    "@react-native-async-storage/async-storage": "^2.1.0"
+    "@react-native-async-storage/async-storage": "^2.1.0",
+    "@supabase/supabase-js": "^2.49.0",
+    "react-native-url-polyfill": "^2.0.0",
+    "expo-web-browser": "~14.0.0",
+    "expo-linking": "~7.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.0",
